@@ -26,7 +26,7 @@ Usage:
    python3 timebreaker.py -l urls.txt -p payloads.txt -o output.txt -c 10 -t 30 -d 5 -n 1 -m 20 -v
    ```
 
-### Parameters
+## Parameters
 
 | Parameter                | Description                                                                       |
 |--------------------------|-----------------------------------------------------------------------------------|
