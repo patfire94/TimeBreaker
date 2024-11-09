@@ -1,3 +1,4 @@
-aiohttp==3.8.1
-colorama==0.4.6
-tqdm==4.64.1
+aiohttp
+colorama
+tqdm
+requests
