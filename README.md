@@ -27,7 +27,7 @@ Usage:
    python3 timebreaker.py -l urls.txt -p payloads.txt -o output.txt -c 10 -t 30 -d 5 -n 1 -m 20 -v
    python3 timebreaker.py -l urls.txt -p payloads.txt --headers "https://discord.com/api/webhooks/your-webhook-id/your-webhook-token"
    ```
-## Discor webhook Integration:
+## Discord webhook Integration:
 
 ![Discord_webhook](https://github.com/user-attachments/assets/a5c0023b-b8e8-47c1-9369-ccb00a2f3250)
 
