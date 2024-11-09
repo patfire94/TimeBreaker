@@ -1,7 +1,6 @@
 # Time-Based Blind SQL Injection Scanner
 
-![Scanner Banner](![2024-11-09 21_29_10-](https://github.com/user-attachments/assets/520a9570-cd12-4638-a4be-0603ab7c50da))
-
+(https://github.com/user-attachments/assets/520a9570-cd12-4638-a4be-0603ab7c50da)
 
 
 This tool identifies time-based SQL injection vulnerabilities in a provided list of URLs.
