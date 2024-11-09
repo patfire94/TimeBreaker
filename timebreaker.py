@@ -4,15 +4,15 @@ import aiohttp
 import os
 import time
 import logging
-import json  # Per leggere il file degli headers
+import json  
 from urllib.parse import urlencode, urlsplit, urlunsplit, parse_qs
 from colorama import Fore, init, Style
 from tqdm import tqdm
 
-# Initialize Colorama for color output
+
 init(autoreset=True)
 
-# Configure logging to suppress all aiohttp messages
+
 logging.basicConfig(level=logging.CRITICAL)
 aiohttp_logger = logging.getLogger('aiohttp')
 aiohttp_logger.setLevel(logging.CRITICAL)
@@ -64,9 +64,9 @@ class TimeBasedSQLiScanner:
         self.min_response_time = min_response_time
         self.max_response_time = max_response_time
         self.verbose = verbose
-        self.vulnerable_urls = []  # Store tuples of (url, payload)
+        self.vulnerable_urls = []  
         self.total_scanned = 0
-        self.headers = headers  # Nuovo campo per gli headers personalizzati
+        self.headers = headers  
 
     def generate_payload_urls(self, url, payload):
         url_combinations = []
@@ -92,12 +92,12 @@ class TimeBasedSQLiScanner:
                 start_time = time.time()
                 if self.verbose:
                     print(f"{Fore.CYAN}[i] Scanning {url} with payload: {payload}")
-                async with session.get(url, headers=self.headers, allow_redirects=True, timeout=self.max_response_time) as resp:  # Aggiunti gli headers
+                async with session.get(url, headers=self.headers, allow_redirects=True, timeout=self.max_response_time) as resp: 
                     response_time = time.time() - start_time
                     if response_time >= self.min_response_time:
                         if response_time >= self.delay:
                             print(f"{Fore.GREEN}💉 Vulnerable to SQLI 💉: {Fore.WHITE}{url}")
-                            return (url, payload)  # Return URL with payload
+                            return (url, payload)  
             except asyncio.TimeoutError:
                 if self.verbose:
                     print(f"{Fore.RED}[!] Timeout fetching {url}. Skipping to next URL.")
@@ -123,16 +123,16 @@ class TimeBasedSQLiScanner:
                         if 'timeout' in results or 'error' in results:
                             if self.verbose:
                                 print(f"{Fore.YELLOW}[i] Skipping {url} due to error or timeout.")
-                            break  # Skip to the next URL if there is any timeout or error
+                            break 
 
-                        # Check if any result indicates a vulnerability
+                        
                         found_vulnerable = [result for result in results if isinstance(result, tuple)]
                         if found_vulnerable:
-                            # Store the vulnerable URL and the payload
+                            
                             self.vulnerable_urls.extend(found_vulnerable)
                             self.total_scanned += 1
                             url_vulnerable = True
-                            break  # Stop testing other payloads if a vulnerability is found
+                            break  
 
                     if self.verbose and not url_vulnerable:
                         print(f"{Fore.YELLOW}[i] No vulnerabilities found for {url}")
@@ -152,14 +152,14 @@ class TimeBasedSQLiScanner:
             if save_option == 'y':
                 with open(self.output_file, "w") as file:
                     for url, payload in self.vulnerable_urls:
-                        file.write(f"{url} | Payload: {payload}\n")  # Save the URL and payload
+                        file.write(f"{url} | Payload: {payload}\n")  
                 print(f"{Fore.GREEN}[+] URLs and payloads saved to {self.output_file}")
             else:
                 print(f"{Fore.YELLOW}Vulnerable URLs and payloads will not be saved.")
 
 def main():
     clear_screen()
-    print(banner)  # Print the banner
+    print(banner)  
 
     parser = argparse.ArgumentParser(description="Time-Based Blind SQL Injection Scanner")
     parser.add_argument('-l', '--list', required=True, help="File containing the list of URLs to scan")
@@ -171,7 +171,7 @@ def main():
     parser.add_argument('-n', '--min-response-time', type=float, default=1.0, help="Minimum response time in seconds to consider as a sign of vulnerability")
     parser.add_argument('-m', '--max-response-time', type=int, default=20, help="Maximum response time in seconds before skipping the URL")
     parser.add_argument('-v', '--verbose', action='store_true', help="Enable verbose output")
-    parser.add_argument('--headers', help="File containing custom headers in JSON format")  # Nuovo argomento
+    parser.add_argument('--headers', help="File containing custom headers in JSON format")  
 
     args = parser.parse_args()
 
