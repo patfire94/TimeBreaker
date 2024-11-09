@@ -1,6 +1,6 @@
 # Time-Based Blind SQL Injection Scanner
 
-![Scanner Banner](![2024-11-09 21_42_12-](https://github.com/user-attachments/assets/dd9e438b-8c6d-4e67-8661-688fa5798aae)
+![Scanner Banner](https://github.com/user-attachments/assets/dd9e438b-8c6d-4e67-8661-688fa5798aae)
 
 
 
