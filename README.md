@@ -15,8 +15,8 @@ This tool identifies time-based SQL injection vulnerabilities in a provided list
 
 Clone the repository:
    ```bash
-   git clone https://github.com/your_username/time-sqli-scanner.git
-   cd time-sqli-scanner
+   git clone https://github.com/your_username/timebreaker.git
+   cd TimeBreaker
    pip install -r requirements.txt
    ``` 
 ## Usasge
@@ -34,8 +34,8 @@ Usage:
 
 ## Parameters
 
-| Parameter                | Description                                                                       |
-|--------------------------|-----------------------------------------------------------------------------------|
+| Parameter                | Description                                                                      |
+|--------------------------|----------------------------------------------------------------------------------|
 | `-l`, `--list`           | File containing the list of URLs to scan (required)                              |
 | `-p`, `--payload`        | File with test payloads (required)                                               |
 | `-o`, `--output`         | File to save vulnerable URLs (default: `output.txt`)                             |
