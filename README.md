@@ -25,7 +25,7 @@ Usage:
    ```bash
    python3 timebreaker.py -h
    python3 timebreaker.py -l urls.txt -p payloads.txt -o output.txt -c 10 -t 30 -d 5 -n 1 -m 20 -v
-   python3 timebreaker.py -l urls.txt -p payloads.txt --headers "https://discord.com/api/webhooks/your-webhook-id/your-webhook-token"
+   python3 timebreaker.py -l urls.txt -p payloads.txt --webhook "https://discord.com/api/webhooks/your-webhook-id/your-webhook-token"
    ```
 ## Discord webhook Integration:
 
